@@ -11,7 +11,8 @@ function App() {
     const [destination, setDestination] = useState('');
     const [days, setDays] = useState('');
     // eslint-disable-next-line no-unused-vars
-    const interests = ["travel", "coding", "music"] = useState('');
+    const [interests, setInterests] = useState(["travel", "coding", "music"]);
+
     const [itinerary, setItinerary] = useState(''); // Store the generated itinerary
 
     const startChat = () => {
