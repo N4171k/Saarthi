@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
@@ -11,7 +10,6 @@ function App() {
     const [destination, setDestination] = useState('');
     const [days, setDays] = useState('');
     const [interests, setInterests] = useState('');
-
     const [itinerary, setItinerary] = useState(''); // Store the generated itinerary
 
     const startChat = () => {
@@ -54,12 +52,11 @@ function App() {
             } else if (conversationState === 'askInterests') {
                 // Save interests and generate itinerary
                 setInterests(input);
-                const response = await axios.post('http://localhost:5000/generate-itinerary', {
+                const response = await axios.post('https://saarthi-r1h2.vercel.app/generate-itinerary', {
                     destination,
                     days,
                     interests: input.split(',').map((i) => i.trim()),
                 });
-
                 // Format the response (handle bold text)
                 const formattedResponse = response.data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                 setMessages([...newMessages, { sender: 'bot', text: formattedResponse }]);
@@ -67,11 +64,10 @@ function App() {
                 setConversationState('postItinerary'); // Transition to post-itinerary state
             } else if (conversationState === 'postItinerary' || conversationState === 'freeChat') {
                 // Handle follow-up questions with itinerary context
-                const response = await axios.post('http://localhost:5000/generate-itinerary', {
+                const response = await axios.post('https://saarthi-r1h2.vercel.app/generate-itinerary', {
                     followUpQuestion: input,
                     itinerary, // Include the itinerary context
                 });
-
                 // Format the response (handle bold text)
                 const formattedResponse = response.data.reply.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
                 setMessages([...newMessages, { sender: 'bot', text: formattedResponse }]);
