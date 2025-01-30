@@ -10,8 +10,7 @@ function App() {
     const [conversationState, setConversationState] = useState('idle'); // Tracks the conversation flow
     const [destination, setDestination] = useState('');
     const [days, setDays] = useState('');
-    // eslint-disable-next-line no-unused-vars
-    const [interests, setInterests] = useState(["travel", "coding", "music"]);
+    const [interests, setInterests] = useState('');
 
     const [itinerary, setItinerary] = useState(''); // Store the generated itinerary
 
