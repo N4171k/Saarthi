@@ -6,7 +6,7 @@
             "use": "@vercel/node"
         },
         {
-            "src": "https://saarthi-front1.vercel.app/package.json",
+            "src": "https://saarthi-front.vercel.app/package.json",
             "use": "@vercel/static-build",
             "config": {
                 "distDir": "build"
@@ -20,7 +20,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "https://saarthi-front1.vercel.app/build/$1"
+            "dest": "https://saarthi-front.vercel.app/build/$1"
         }
     ]
 }
